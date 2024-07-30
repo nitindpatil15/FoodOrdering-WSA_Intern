@@ -1,5 +1,6 @@
 import React from "react";
 import Search from "./Search";
+import { Link } from "react-router-dom";
 
 const Header = () => {
   return (
@@ -10,7 +11,7 @@ const Header = () => {
       <div className="col-12 col-md-6 mt-2 mt-md-6">
       <Search />
       </div>
-      <div className="col-12 col-md-3 mt-4 mt-md-0">
+      <Link to='/cart' className="col-12 col-md-3 mt-4 mt-md-0">
         <span className="ml-3" id="cart">cart</span>
         <span className="ml-1" id="cart_count">0</span>
 
@@ -25,7 +26,7 @@ const Header = () => {
             <>
             <div className="btn ml-4" id="login_btn">Login</div></>
         )}
-      </div>
+      </Link>
     </nav>
   );
 };
