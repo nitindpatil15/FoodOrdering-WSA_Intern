@@ -6,9 +6,22 @@ import {
 } from "redux";
 import thunk from 'redux-thunk'
 import { restaurantReducer } from "./reducer/restaurantReducer";
+import { menuReducer } from "./reducer/menuReducer";
+import {authReducer, forgotPasswordReducer, userReducer} from './reducer/userReducer'
+import { cartReducer } from "./reducer/cartReducer";
+import { myOrderReducer, newOrderReducer, orderDetailReducer } from "./reducer/orderReducer";
+
 
 const reducer = combineReducers({
-    restaurants: restaurantReducer
+    restaurants: restaurantReducer,
+    menus:menuReducer,
+    auth: authReducer,
+    update:userReducer,
+    forgetPassword:forgotPasswordReducer,
+    cart:cartReducer,
+    newOrder:newOrderReducer,
+    myOrders:myOrderReducer,
+    orderDetails:orderDetailReducer,
 })
 
 // To Connect DEVTOOL IN BROWSER 

@@ -14,7 +14,6 @@ export default function Home(props) {
     dispatch(getRestaurants());
   }, [dispatch]);
 
-  console.log("Restaurants Data in Home:", restaurants); // Add this line
   const handleSortByReview =()=>{
     dispatch(sortByReviews())
   }

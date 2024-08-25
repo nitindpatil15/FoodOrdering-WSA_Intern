@@ -6,7 +6,6 @@ export const getRestaurants = () => {
     try {
       dispatch({ type: ALL_RESTAURANTS_REQUEST });
       const { data } = await axios.get("/api/v1/eats/stores");
-      console.log("API Data:", data); // Add this line
       dispatch({
         type: ALL_RESTAURANTS_SUCCESS,
         payload: data,

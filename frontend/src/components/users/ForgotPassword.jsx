@@ -1,10 +1,35 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { clearErrors, forgotPassword } from "../../actions/userAction";
 
 const ForgotPassword = () => {
+  const dispatch = useDispatch();
+  const { error, loading, message } = useSelector(
+    (state) => state.forgetPassword
+  );
+  const [email, setEmail] = useState("");
+
+  useEffect(() => {
+    if (error) {
+      alert.error(error);
+      dispatch(clearErrors());
+    }
+    if (message) {
+      alert.success(message);
+    }
+  }, [dispatch, alert, error, message]);
+
+  const submitHandler = (e) => {
+    e.preventDefault();
+    const formData = new FormData();
+    formData.set("email", email);
+
+    dispatch(forgotPassword(formData));
+  };
   return (
     <>
       <div className="row wrapper">
-        <div className="col-10 col-lg-5">
+        <div className="col-10 col-lg-5" onSubmit={submitHandler}>
           <form className="shadow-lg">
             <h1 className="mb-3">Forgot Password</h1>
             <div className="form-group">
@@ -13,7 +38,8 @@ const ForgotPassword = () => {
                 type="email"
                 id="email_field"
                 className="form-control"
-                value={"abc@mail.com"}
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
               />
             </div>
             <button
